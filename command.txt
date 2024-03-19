@@ -1,0 +1,5 @@
+# Command used to profile program
+python -m cProfile -o program.prof main.py
+
+# Visualisation
+snakeviz program.prof
