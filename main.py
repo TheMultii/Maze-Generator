@@ -81,9 +81,7 @@ def next_cell(current, grid):
         return None
 
 
-def main():
-    # initialize the image and draw object
-    img = Image.new("RGB", (WIDTH, HEIGHT), WHITE)
+def generate_maze(img):
     draw = ImageDraw.Draw(img)
 
     grid = []
@@ -110,14 +108,23 @@ def main():
             current.visited = True
             stack.append(current)
 
-    # Draw
+
     for i in range(rows):
         for j in range(cols):
             grid[i][j].draw(draw)
 
-    # Display image
-    s = datetime.now().strftime("%Y%m%d%H%M%S")
-    img.save(f"maze_{s}.png")
+
+def save_maze(img):
+    date = datetime.now().strftime("%Y%m%d%H%M%S")
+    img.save(f"maze_{date}.png")
+
+
+def main():
+    # initialize the image and draw object
+    img = Image.new("RGB", (WIDTH, HEIGHT), WHITE)
+    generate_maze(img)
+    save_maze(img)
+
     # img.show()
 
 
